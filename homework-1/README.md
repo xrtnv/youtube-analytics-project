@@ -13,3 +13,7 @@
 
 ## Ожидаемое поведение
 - Код в файле `main.py` должен выдавать ожидаемые значения
+
+login: forsphws@gmail.com
+passwd: forsphws123
+token: AIzaSyDJ7nw2WYTf8aOKlpLQ7laJn6vYDyLbh_M
