@@ -7,15 +7,22 @@ from googleapiclient.discovery import build
 class Video:
     def __init__(self, video_id):
         self.video_id = video_id
+        self.title = None
+        self.link = None
+        self.views = None
+        self.like_count = None
 
         youtube = self.get_service()
         video = youtube.videos().list(id=self.video_id, part='snippet,statistics').execute()
-        video_snippet = video['items'][0]['snippet']
-        video_statistics = video['items'][0]['statistics']
-        self.title = video_snippet['title']
-        self.link = f'https://www.youtube.com/watch?v={self.video_id}'
-        self.views = video_statistics['viewCount']
-        self.likes = video_statistics['likeCount']
+        a = video['items']
+        if len(video['items']) > 0:
+            video_snippet = video['items'][0]['snippet']
+            video_statistics = video['items'][0]['statistics']
+            self.title = video_snippet['title']
+            self.link = f'https://www.youtube.com/watch?v={self.video_id}'
+            self.views = video_statistics['viewCount']
+            self.like_count = video_statistics['likeCount']
+
 
     def __str__(self):
         return self.title
