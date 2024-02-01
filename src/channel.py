@@ -58,8 +58,8 @@ class Channel:
             youtube = self.get_service()
             channel = youtube.channels().list(id=self._channel_id, part='snippet,statistics').execute()
             return channel
-        except Exception as e:
-            pass
+        except IndexError as e:
+            return None
 
     def get_info(self) -> None:
         """Возвращает информацию о канале в виде строки."""

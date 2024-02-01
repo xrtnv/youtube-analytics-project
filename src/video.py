@@ -14,7 +14,6 @@ class Video:
 
         youtube = self.get_service()
         video = youtube.videos().list(id=self.video_id, part='snippet,statistics').execute()
-        a = video['items']
         if len(video['items']) > 0:
             video_snippet = video['items'][0]['snippet']
             video_statistics = video['items'][0]['statistics']
